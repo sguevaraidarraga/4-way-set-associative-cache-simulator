@@ -1,6 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 
+#include "Settings.h"
 #include <vector>
 #include <iostream>
 

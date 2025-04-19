@@ -1,7 +1,7 @@
-#include "Set.h"
+#include "Cache.h"
 
 int main() {
-    Set s;
-    s.print();
+    Cache c;
+    c.print();
     return 0;
 }

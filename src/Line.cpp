@@ -3,7 +3,7 @@
 Line::Line() {
     valid = false;
     tag = 0;
-    data = vector<int>();
+    data = vector<int>(Settings::BLOCK_SIZE, 0);
 }
 void Line::replace(const int newTag, const vector<int> &newData) {
     valid = true;

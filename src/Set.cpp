@@ -7,7 +7,7 @@ Set::Set() {
 void Set::set(const int tag, const vector<int> &data) {
     lines[indx].replace(tag, data);
     indx++;
-    if(indx > Settings::SET_LINES) {
+    if(indx == Settings::SET_LINES) {
         indx = 0;
     }
 }
