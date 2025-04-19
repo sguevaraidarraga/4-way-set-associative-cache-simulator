@@ -8,16 +8,15 @@
 using std::vector;
 
 class Set {
-    private:
-        int indx;
-        vector<Line> lines;
+    int indx;
+    vector<Line> lines;
 
     public:
         Set();
-        void set(int, vector<int>&);
-        int getLineIndxByTag(int);
+        void set(int, const vector<int>&);
+        int getLineIndxByTag(int) const;
         Line& getLine(int);
-        void print();
+        void print() const;
 };
 
 #endif

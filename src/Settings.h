@@ -6,17 +6,18 @@
 using std::log2;
 
 struct Settings {
-    const int BYTE_ADDRESS = log2(2048);
-    const int BLOCK_SIZE = 16;                                          // Tamaño de bloque (en Bytes)
-    const int NUM_BLOCKS = 32;                                          // Total de bloques
-    const int SET_LINES = 4;
-    const int NUM_SETS = NUM_BLOCKS/SET_LINES;
-    const int WORD_SIZE = 1;                                            // Palabras por bloque (en Bytes)
-    const int OFFSET_BITS = log2(BLOCK_SIZE);
-    const int INDEX_BITS = log2(CACHE_SIZE);
-    const int TAG_BITS = BYTE_ADDRESS - (INDEX_BITS + OFFSET_BITS);
-    const int CACHE_SIZE = 2*INDEX_BITS;
-    const int MUX_SELECTOR = log2(WORD_SIZE);
+    static constexpr int ADDRESS_BITS = static_cast<int>(log2(2048));
+    static constexpr int WORD_SIZE = 1;
+    static constexpr int BLOCK_SIZE = 16;
+    static constexpr int TOTAL_BLOCKS = 32;
+    static constexpr int SET_LINES = 4;
+    static constexpr int NUM_SETS = TOTAL_BLOCKS/SET_LINES;
+    static constexpr int CACHE_SIZE = NUM_SETS;
+    static constexpr int INDEX_BITS = static_cast<int>(log2(NUM_SETS));
+    static constexpr int OFFSET_BITS = static_cast<int>(log2(BLOCK_SIZE));
+    static constexpr int TAG_BITS = ADDRESS_BITS - (INDEX_BITS + OFFSET_BITS);
+    static constexpr int WORDS_PER_BLOCK = BLOCK_SIZE/WORD_SIZE;
+    static constexpr int MUX_SELECTOR = static_cast<int>(log2(WORDS_PER_BLOCK));
 };
 
 #endif

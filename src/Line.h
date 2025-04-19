@@ -9,18 +9,17 @@ using std::cout;
 using std::endl;
 
 class Line {
-    private:
-        bool valid;
-        int tag;
-        vector<int> data;
+    bool valid;
+    int tag;
+    vector<int> data;
     
     public:
         Line();
-        void replace(int, vector<int>&);
-        bool isValid();
-        int getTag();
+        void replace(int, const vector<int>&);
+        bool isValid() const;
+        int getTag() const;
         vector<int>& getData();
-        void print();
+        void print() const;
 };
 
 #endif

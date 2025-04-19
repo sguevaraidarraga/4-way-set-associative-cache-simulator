@@ -8,8 +8,7 @@
 using std::vector;
 
 class Cache {
-    private:
-        vector<Set> sets;
+    vector<Set> sets;
     
     public:
         Cache();
