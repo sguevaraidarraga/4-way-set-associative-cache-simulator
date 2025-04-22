@@ -25,7 +25,7 @@ Line& Set::getLine(const int idx) {
     return lines[idx];
 }
 void Set::print() const {
-    for(int i = 0; i < lines.size(); i++) {
-        lines[i].print();
+    for(auto line : lines) {
+        line.print();
     }
 }
