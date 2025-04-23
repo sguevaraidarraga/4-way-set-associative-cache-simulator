@@ -4,7 +4,7 @@ Set::Set() {
     indx = 0;
     lines = vector<Line>(Settings::SET_LINES);
 }
-void Set::set(const int tag, const vector<int> &data) {
+void Set::set(const int tag, const vector<Element> &data) {
     lines[indx].replace(tag, data);
     indx++;
     if(indx == Settings::SET_LINES) {

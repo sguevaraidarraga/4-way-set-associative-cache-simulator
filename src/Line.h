@@ -2,6 +2,7 @@
 #define LINE_H
 
 #include "Settings.h"
+#include "Element.h"
 #include <vector>
 #include <iostream>
 
@@ -11,15 +12,15 @@ using std::endl;
 
 class Line {
     bool valid;
-    int tag;
-    vector<int> data;
+    unsigned int tag;
+    vector<Element> data;
     
     public:
         Line();
-        void replace(int, const vector<int>&);
+        void replace(int, const vector<Element>&);
         bool isValid() const;
         int getTag() const;
-        vector<int>& getData();
+        vector<Element>& getData();
         void print() const;
 };
 

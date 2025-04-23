@@ -3,6 +3,7 @@
 
 #include "Settings.h"
 #include "Line.h"
+#include "Element.h"
 #include <vector>
 
 using std::vector;
@@ -13,7 +14,7 @@ class Set {
 
     public:
         Set();
-        void set(int, const vector<int>&);
+        void set(int, const vector<Element>&);
         int getLineIndxByTag(int) const;
         Line& getLine(int);
         void print() const;
