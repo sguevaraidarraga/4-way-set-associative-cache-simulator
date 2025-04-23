@@ -11,7 +11,7 @@ void Element::replace(const pair<unsigned char, unsigned char> &newElement, Elem
 pair<unsigned char, unsigned char> Element::getElement() {
     return element;
 }
-ElementType Element::getType() {
+ElementType Element::getType() const {
     return type;
 }
 void Element::print() const {

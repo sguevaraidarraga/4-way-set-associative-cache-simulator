@@ -16,7 +16,7 @@ class Element {
         Element();
         void replace(const pair<unsigned char, unsigned char>&, ElementType);
         pair<unsigned char, unsigned char> getElement();
-        ElementType getType();
+        ElementType getType() const;
         void print() const;
 };
 

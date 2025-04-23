@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Cache
     src/Settings.h
+    src/Decoder.h
+    src/Decoder.cpp
     src/ElementType.h
     src/Element.h
     src/Element.cpp
