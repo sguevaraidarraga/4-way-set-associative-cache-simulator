@@ -4,14 +4,14 @@ Set::Set() {
     indx = 0;
     lines = vector<Line>(Settings::SET_LINES);
 }
-void Set::set(const int tag, const vector<Element> &data) {
+void Set::set(const unsigned int tag, const vector<Element> &data) {
     lines[indx].replace(tag, data);
     indx++;
     if(indx == Settings::SET_LINES) {
         indx = 0;
     }
 }
-int Set::getLineIndxByTag(const int tag) const {
+int Set::getLineIndxByTag(const unsigned int tag) const {
     int i;
     bool found = false;
     for(i = 0; i < Settings::SET_LINES && !found; i++) {
@@ -21,11 +21,11 @@ int Set::getLineIndxByTag(const int tag) const {
     }
     return (found == true) ? i : -1;
 }
-Line& Set::getLine(const int idx) {
+Line& Set::getLine(const unsigned int idx) {
     return lines[idx];
 }
 void Set::print() const {
-    for(auto line : lines) {
+    for(const auto &line : lines) {
         line.print();
     }
 }

@@ -6,18 +6,22 @@ enable_testing()
 
 set(CMAKE_CXX_STANDARD 17)
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 add_executable(Cache
-    src/Settings.h
-    src/Decoder.h
-    src/Decoder.cpp
-    src/ElementType.h
-    src/Element.h
-    src/Element.cpp
-    src/Line.h
-    src/Line.cpp
-    src/Set.h
-    src/Set.cpp
-    src/Cache.h
-    src/Cache.cpp
+    src/decoder/AddressDecoder.h
+    src/decoder/AddressDecoder.cpp
+    src/settings/Settings.h
+    src/system/cache/logic/line/Line.h
+    src/system/cache/logic/line/Line.cpp
+    src/system/cache/logic/set/Set.h
+    src/system/cache/logic/set/Set.cpp
+    src/system/cache/logic/Cache.h
+    src/system/cache/logic/Cache.cpp
+    src/system/cache/CacheController.h
+    src/system/memory/DRAM.h
+    src/system/shared/type/ElementType.h
+    src/system/shared/Element.h
+    src/system/shared/Element.cpp
     src/main.cpp
 )

@@ -4,7 +4,7 @@
 enum class ElementType {
     LETTER,
     DIGIT,
-    OTHER
+    COMBINATION
 };
 
 #endif

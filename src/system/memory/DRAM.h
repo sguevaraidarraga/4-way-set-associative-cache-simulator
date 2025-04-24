@@ -1,13 +1,14 @@
 #ifndef DRAM_H
 #define DRAM_H
 
-#include "Settings.h"
+#include "settings/Settings.h"
+#include "system/shared/Element.h"
 #include <vector>
 
 using std::vector;
 
 class DRAM {
-    vector<int> data;
+    vector<Element> data;
 
     public:
         

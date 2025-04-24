@@ -1,7 +1,7 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "ElementType.h"
+#include "system/shared/type/ElementType.h"
 #include <utility>
 #include <iostream>
 
@@ -16,7 +16,7 @@ class Element {
         Element();
         void replace(const pair<unsigned char, unsigned char>&, ElementType);
         pair<unsigned char, unsigned char> getElement();
-        ElementType getType() const;
+        ElementType& getType();
         void print() const;
 };
 

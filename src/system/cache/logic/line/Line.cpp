@@ -5,7 +5,7 @@ Line::Line() {
     tag = 0;
     data = vector<Element>(Settings::BLOCK_SIZE);
 }
-void Line::replace(const int newTag, const vector<Element> &newData) {
+void Line::replace(const unsigned int newTag, const vector<Element> &newData) {
     valid = true;
     tag = newTag;
     data = newData;
@@ -13,7 +13,7 @@ void Line::replace(const int newTag, const vector<Element> &newData) {
 bool Line::isValid() const {
     return valid;
 }
-int Line::getTag() const {
+unsigned int Line::getTag() const {
     return tag;
 }
 vector<Element>& Line::getData() {

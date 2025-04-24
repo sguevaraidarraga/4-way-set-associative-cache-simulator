@@ -1,9 +1,9 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-#include "Settings.h"
-#include "Decoder.h"
-#include "Set.h"
+#include "settings/Settings.h"
+#include "decoder/AddressDecoder.h"
+#include "system/cache/logic/set/Set.h"
 #include <vector>
 #include <iostream>
 
@@ -12,7 +12,7 @@ using std::cout;
 using std::endl;
 
 class Cache {
-    Decoder info;
+    AddressDecoder info;
     vector<Set> sets;
     
     public:

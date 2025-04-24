@@ -1,8 +1,8 @@
 #ifndef LINE_H
 #define LINE_H
 
-#include "Settings.h"
-#include "Element.h"
+#include "settings/Settings.h"
+#include "system/shared/Element.h"
 #include <vector>
 #include <iostream>
 
@@ -17,9 +17,9 @@ class Line {
     
     public:
         Line();
-        void replace(int, const vector<Element>&);
+        void replace(unsigned int, const vector<Element>&);
         bool isValid() const;
-        int getTag() const;
+        unsigned int getTag() const;
         vector<Element>& getData();
         void print() const;
 };

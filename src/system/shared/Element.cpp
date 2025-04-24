@@ -4,14 +4,14 @@ Element::Element() {
     element = {'0', '0'};
     type = ElementType::DIGIT;
 }
-void Element::replace(const pair<unsigned char, unsigned char> &newElement, ElementType newType) {
+void Element::replace(const pair<unsigned char, unsigned char> &newElement, const ElementType newType) {
     element = newElement;
     type = newType;
 }
 pair<unsigned char, unsigned char> Element::getElement() {
     return element;
 }
-ElementType Element::getType() const {
+ElementType& Element::getType() {
     return type;
 }
 void Element::print() const {

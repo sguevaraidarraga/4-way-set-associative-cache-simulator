@@ -1,13 +1,13 @@
-#ifndef DECODER_H
-#define DECODER_H
+#ifndef ADDRESSDECODER_H
+#define ADDRESSDECODER_H
 
-#include "Settings.h"
+#include "settings/Settings.h"
 
-class Decoder {
+class AddressDecoder {
     unsigned int tag, index, offset;
 
     public:
-        Decoder();
+        AddressDecoder();
         void decode(unsigned int);
         unsigned int getTag() const;
         unsigned int getIndex() const;
