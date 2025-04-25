@@ -6,7 +6,8 @@
 using std::log2;
 
 struct Settings {
-    static constexpr int ADDRESS_BITS = static_cast<int>(log2(2048));
+    static constexpr int MEMORY_SIZE = 2048;
+    static constexpr int ADDRESS_BITS = static_cast<int>(log2(MEMORY_SIZE));
     static constexpr int WORD_SIZE = 1;
     static constexpr int BLOCK_SIZE = 16;
     static constexpr int TOTAL_BLOCKS = 32;

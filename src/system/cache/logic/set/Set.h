@@ -14,9 +14,9 @@ class Set {
 
     public:
         Set();
-        void set(unsigned int, const vector<Element>&);
-        int getLineIndxByTag(unsigned int) const;
-        Line& getLine(unsigned int);
+        void replaceLine(unsigned int, const vector<Element>&);
+        void updateElement(unsigned int, unsigned int, Element&);
+        bool inCache(unsigned int) const;
         void print() const;
 };
 

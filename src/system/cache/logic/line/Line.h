@@ -17,10 +17,10 @@ class Line {
     
     public:
         Line();
-        void replace(unsigned int, const vector<Element>&);
+        void setLine(unsigned int, const vector<Element>&);
+        void updateElement(unsigned int, unsigned int, Element&);
         bool isValid() const;
         unsigned int getTag() const;
-        vector<Element>& getData();
         void print() const;
 };
 

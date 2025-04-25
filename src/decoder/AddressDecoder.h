@@ -4,11 +4,14 @@
 #include "settings/Settings.h"
 
 class AddressDecoder {
-    unsigned int tag, index, offset;
+    unsigned int baseAddress, tag, index, offset;
+
+    AddressDecoder();
 
     public:
-        AddressDecoder();
+        static AddressDecoder& getInstance();
         void decode(unsigned int);
+        unsigned int getBaseAddress() const;
         unsigned int getTag() const;
         unsigned int getIndex() const;
         unsigned int getOffset() const;

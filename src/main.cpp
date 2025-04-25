@@ -1,7 +1,8 @@
-#include "system/cache/logic/Cache.h"
+#include "system/cache/Controller.h"
 
 int main() {
-    Cache c;
-    c.print();
+    Controller c;
+    c.printCache();
+    //c.printDRAM();
     return 0;
 }

@@ -3,12 +3,7 @@
 Line::Line() {
     valid = false;
     tag = 0;
-    data = vector<Element>(Settings::BLOCK_SIZE);
-}
-void Line::replace(const unsigned int newTag, const vector<Element> &newData) {
-    valid = true;
-    tag = newTag;
-    data = newData;
+    data = vector<Element>(Settings::WORDS_PER_BLOCK);
 }
 bool Line::isValid() const {
     return valid;
@@ -16,16 +11,23 @@ bool Line::isValid() const {
 unsigned int Line::getTag() const {
     return tag;
 }
-vector<Element>& Line::getData() {
-    return data;
+void Line::setLine(const unsigned int newTag, const vector<Element> &newData) {
+    valid = true;
+    tag = newTag;
+    data = newData;
+}
+void Line::updateElement(const unsigned int newTag, const unsigned int offset, Element &datum) {
+    valid = true;
+    tag = newTag;
+    data[offset] = datum;
 }
 void Line::print() const {
-    cout << "[ " << valid << " | " << tag << " | " << "data[";
-    for(int i = 0; i < data.size(); i++) {
+    cout << "| " << "Valid : " <<  valid << " | Tag: " << tag << " | Data: " << '[';
+    for(size_t i = 0; i < data.size(); i++) {
         data[i].print();
         if(i != data.size()-1) {
             cout << ", ";
         }
     }
-    cout << "] ]" << endl;
+    cout << "] |" << endl;
 }

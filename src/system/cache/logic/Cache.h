@@ -2,7 +2,6 @@
 #define CACHE_H
 
 #include "settings/Settings.h"
-#include "decoder/AddressDecoder.h"
 #include "system/cache/logic/set/Set.h"
 #include <vector>
 #include <iostream>
@@ -12,12 +11,13 @@ using std::cout;
 using std::endl;
 
 class Cache {
-    AddressDecoder info;
     vector<Set> sets;
     
     public:
         Cache();
-        int read(unsigned int);
+        bool read(unsigned int, unsigned int);
+        void writeLine(unsigned int, unsigned int, const vector<Element>&);
+        void updateElement(unsigned int, unsigned int, unsigned int, Element&);
         void print() const;
 };
 
