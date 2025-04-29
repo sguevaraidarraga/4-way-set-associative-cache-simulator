@@ -1,8 +1,8 @@
 #ifndef LINE_H
 #define LINE_H
 
-#include "settings/Settings.h"
-#include "system/shared/Element.h"
+#include "utils/Constants.h"
+#include "memory/type/Element.h"
 #include <vector>
 #include <iostream>
 

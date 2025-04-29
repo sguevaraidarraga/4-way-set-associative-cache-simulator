@@ -1,8 +1,8 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-#include "settings/Settings.h"
-#include "system/cache/logic/set/Set.h"
+#include "utils/Constants.h"
+#include "memory/cache/Set.h"
 #include <vector>
 #include <iostream>
 

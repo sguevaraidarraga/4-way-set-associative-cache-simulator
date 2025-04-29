@@ -1,4 +1,4 @@
-#include "Line.h"
+#include "memory/cache/Line.h"
 
 Line::Line() {
     valid = false;

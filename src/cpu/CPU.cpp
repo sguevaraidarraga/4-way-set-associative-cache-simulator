@@ -1,4 +1,4 @@
-#include "system/cache/Controller.h"
+#include "cpu/CPU.h"
 
 Controller::Controller() {
     cache = Cache();

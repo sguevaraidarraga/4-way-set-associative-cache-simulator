@@ -1,15 +1,15 @@
-#ifndef ADDRESSDECODER_H
-#define ADDRESSDECODER_H
+#ifndef ADDRESSFIELDSDECOMPOSER_H
+#define ADDRESSFIELDSDECOMPOSER_H
 
-#include "settings/Settings.h"
+#include "utils/Constants.h"
 
-class AddressDecoder {
+class AddressFieldsDecomposer {
     unsigned int baseAddress, tag, index, offset;
 
-    AddressDecoder();
+    AddressFieldsDecomposer();
 
     public:
-        static AddressDecoder& getInstance();
+        static AddressFieldsDecomposer& getInstance();
         void decode(unsigned int);
         unsigned int getBaseAddress() const;
         unsigned int getTag() const;

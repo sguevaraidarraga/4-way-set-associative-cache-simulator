@@ -1,4 +1,4 @@
-#include "stats/Logger.h"
+#include "utils/Logger.h"
 
 Logger::Logger() {
     totalAccesses = hits = misses = 0;

@@ -1,8 +1,8 @@
 #ifndef DRAM_H
 #define DRAM_H
 
-#include "settings/Settings.h"
-#include "system/shared/Element.h"
+#include "utils/Constants.h"
+#include "memory/type/Element.h"
 #include <vector>
 #include <iostream>
 
@@ -18,6 +18,7 @@ class DRAM {
         const Element& read(unsigned int) const;
         void write(unsigned int, Element&);
         void print();
+        
 };
 
 #endif

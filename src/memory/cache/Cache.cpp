@@ -1,4 +1,4 @@
-#include "Cache.h"
+#include "memory/cache/Cache.h"
 
 Cache::Cache() {
     sets = vector<Set>(Settings::NUM_SETS);

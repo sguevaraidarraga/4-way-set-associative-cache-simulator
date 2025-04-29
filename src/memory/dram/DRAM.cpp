@@ -1,4 +1,4 @@
-#include "DRAM.h"
+#include "memory/dram/DRAM.h"
 
 DRAM::DRAM() {
     data = vector<Element>(Settings::MEMORY_SIZE);

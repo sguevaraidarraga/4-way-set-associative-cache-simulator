@@ -1,9 +1,9 @@
 #ifndef SET_H
 #define SET_H
 
-#include "settings/Settings.h"
-#include "system/cache/logic/line/Line.h"
-#include "system/shared/Element.h"
+#include "utils/Constants.h"
+#include "memory/cache/Line.h"
+#include "memory/type/Element.h"
 #include <vector>
 
 using std::vector;

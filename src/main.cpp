@@ -1,4 +1,4 @@
-#include "system/cache/Controller.h"
+#include "cpu/CPU.h"
 
 int main() {
     Controller c;

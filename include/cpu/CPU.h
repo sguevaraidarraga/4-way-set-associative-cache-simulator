@@ -1,12 +1,12 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "settings/Settings.h"
-#include "stats/Logger.h"
-#include "decoder/AddressDecoder.h"
-#include "system/cache/logic/Cache.h"
-#include "system/memory/DRAM.h"
-#include "system/shared/Element.h"
+#include "utils/Constants.h"
+#include "utils/Logger.h"
+#include "utils/AddressFieldsDecomposer.h"
+#include "memory/cache/Cache.h"
+#include "memory/dram/DRAM.h"
+#include "memory/type/Element.h"
 
 class Controller {
     Cache cache;

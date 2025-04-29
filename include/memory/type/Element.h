@@ -1,7 +1,7 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "system/shared/type/ElementType.h"
+#include "memory/type/ElementType.h"
 #include <utility>
 #include <iostream>
 
