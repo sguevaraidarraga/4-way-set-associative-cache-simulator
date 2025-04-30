@@ -7,14 +7,18 @@ AddressFieldsDecomposer& AddressFieldsDecomposer::getInstance() {
     static AddressFieldsDecomposer instance;
     return instance;
 }
-void AddressFieldsDecomposer::decode(const unsigned int address) {
-    offset = address & ((1 << Settings::OFFSET_BITS) - 1);
-    index = (address >> Settings::OFFSET_BITS) & ((1 << Settings::INDEX_BITS) - 1);
-    tag = address >> (Settings::OFFSET_BITS + Settings::INDEX_BITS);
-    baseAddress = address - offset;
+void AddressFieldsDecomposer::decompose(const unsigned int address) {
+    offset = address & ((1 << Constants::OFFSET_BITS) - 1);
+    index = (address >> Constants::OFFSET_BITS) & ((1 << Constants::INDEX_BITS) - 1);
+    tag = address >> (Constants::OFFSET_BITS + Constants::INDEX_BITS);
+    minAddress = address - offset;
+    maxAddress = minAddress + ((1 << Constants::OFFSET_BITS) - 1);
 }
-unsigned int AddressFieldsDecomposer::getBaseAddress() const {
-    return baseAddress;
+unsigned int AddressFieldsDecomposer::getMinAddress() const {
+    return minAddress;
+}
+unsigned int AddressFieldsDecomposer::getMaxAddress() const {
+    return maxAddress;
 }
 unsigned int AddressFieldsDecomposer::getTag() const {
     return tag;

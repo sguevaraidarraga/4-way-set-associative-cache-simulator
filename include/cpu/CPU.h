@@ -1,5 +1,5 @@
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
+#ifndef CPU_H
+#define CPU_H
 
 #include "utils/Constants.h"
 #include "utils/Logger.h"
@@ -8,14 +8,12 @@
 #include "memory/dram/DRAM.h"
 #include "memory/type/Element.h"
 
-class Controller {
+class CPU {
     Cache cache;
     DRAM dram;
 
-    const vector<Element> getBlock() const;
-
     public:
-        Controller();
+        CPU();
         void read(unsigned int);
         void write(unsigned int, Element&);
         void printCache();

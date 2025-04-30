@@ -1,7 +1,7 @@
 #include "memory/dram/DRAM.h"
 
 DRAM::DRAM() {
-    data = vector<Element>(Settings::MEMORY_SIZE);
+    data = vector<Element>(Constants::MEMORY_SIZE);
 }
 const Element& DRAM::read(unsigned int address) const {
     return data[address];
@@ -9,8 +9,17 @@ const Element& DRAM::read(unsigned int address) const {
 void DRAM::write(unsigned int address, Element& datum) {
     data[address] = datum;
 }
+vector<Element> DRAM::getBlock(const unsigned int address) {
+    vector<Element> ans(Constants::WORDS_PER_BLOCK);
+    unsigned int minAddress = AddressFieldsDecomposer::getInstance().getMinAddress(),
+                 maxAddress = AddressFieldsDecomposer::getInstance().getMaxAddress();
+    for(int offset = 0; offset <= maxAddress; offset++) {
+        ans[offset] = data[minAddress + offset];
+    }
+    return ans;
+}
 void DRAM::print() {
-    for(int i = 0; i < Settings::MEMORY_SIZE; i++) {
+    for(int i = 0; i < Constants::MEMORY_SIZE; i++) {
         cout << i << ' ';
         data[i].print();
         cout << endl;

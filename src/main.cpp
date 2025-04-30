@@ -1,8 +1,8 @@
 #include "cpu/CPU.h"
 
 int main() {
-    Controller c;
-    c.printCache();
-    //c.printDRAM();
+    CPU cpu;
+    cpu.printCache();
+    //cpu.printDRAM();
     return 0;
 }

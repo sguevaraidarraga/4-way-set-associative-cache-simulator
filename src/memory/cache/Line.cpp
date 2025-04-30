@@ -3,7 +3,7 @@
 Line::Line() {
     valid = false;
     tag = 0;
-    data = vector<Element>(Settings::WORDS_PER_BLOCK);
+    data = vector<Element>(Constants::WORDS_PER_BLOCK);
 }
 bool Line::isValid() const {
     return valid;

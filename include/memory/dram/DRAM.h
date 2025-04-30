@@ -2,6 +2,7 @@
 #define DRAM_H
 
 #include "utils/Constants.h"
+#include "utils/AddressFieldsDecomposer.h"
 #include "memory/type/Element.h"
 #include <vector>
 #include <iostream>
@@ -17,6 +18,7 @@ class DRAM {
         DRAM();
         const Element& read(unsigned int) const;
         void write(unsigned int, Element&);
+        vector<Element> getBlock(unsigned int address);
         void print();
         
 };

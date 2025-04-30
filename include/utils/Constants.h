@@ -1,11 +1,11 @@
-#ifndef CACHESETTINGS_H
-#define CACHESETTINGS_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #include <cmath>
 
 using std::log2;
 
-struct Settings {
+struct Constants {
     static constexpr int MEMORY_SIZE = 2048;
     static constexpr int ADDRESS_BITS = static_cast<int>(log2(MEMORY_SIZE));
     static constexpr int WORD_SIZE = 1;

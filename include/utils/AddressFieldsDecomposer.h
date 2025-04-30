@@ -4,14 +4,15 @@
 #include "utils/Constants.h"
 
 class AddressFieldsDecomposer {
-    unsigned int baseAddress, tag, index, offset;
+    unsigned int minAddress, maxAddress, tag, index, offset;
 
     AddressFieldsDecomposer();
 
     public:
         static AddressFieldsDecomposer& getInstance();
-        void decode(unsigned int);
-        unsigned int getBaseAddress() const;
+        void decompose(unsigned int);
+        unsigned int getMinAddress() const;
+        unsigned int getMaxAddress() const;
         unsigned int getTag() const;
         unsigned int getIndex() const;
         unsigned int getOffset() const;

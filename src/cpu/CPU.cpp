@@ -1,42 +1,37 @@
 #include "cpu/CPU.h"
 
-Controller::Controller() {
+CPU::CPU() {
     cache = Cache();
     dram = DRAM();
 }
-const vector<Element> Controller::getBlock() const {
-    vector<Element> ans(Settings::WORDS_PER_BLOCK);
-    unsigned int baseAddress = AddressDecoder::getInstance().getBaseAddress();
-    for(int offset = 0; offset < ans.size(); offset++) {
-        ans[offset] = dram.read(baseAddress + offset);
-    }
-    return ans;
-}
-void Controller::read(unsigned int address) {
-    AddressDecoder::getInstance().decode(address);
-    unsigned int tag = AddressDecoder::getInstance().getTag(), index = AddressDecoder::getInstance().getIndex();
+void CPU::read(unsigned int address) {
+    AddressFieldsDecomposer::getInstance().decompose(address);
+    unsigned int tag = AddressFieldsDecomposer::getInstance().getTag(),
+                 index = AddressFieldsDecomposer::getInstance().getIndex();
     if(cache.read(tag, index)) {
-        Logger::getInstance().logHit();
+        Logger::getInstance().logReadHit();
     } else {
-        Logger::getInstance().logMiss();
-        cache.writeLine(tag, index, getBlock());
+        Logger::getInstance().logReadMiss();
+        cache.writeLine(tag, index, dram.getBlock(address));
     }
 }
-void Controller::write(unsigned int address, Element &datum) {
-    AddressDecoder::getInstance().decode(address);
-    unsigned int tag = AddressDecoder::getInstance().getTag(), index = AddressDecoder::getInstance().getIndex(), offset = AddressDecoder::getInstance().getOffset();
+void CPU::write(unsigned int address, Element &datum) {
+    AddressFieldsDecomposer::getInstance().decompose(address);
+    unsigned int tag = AddressFieldsDecomposer::getInstance().getTag(),
+                 index = AddressFieldsDecomposer::getInstance().getIndex(),
+                 offset = AddressFieldsDecomposer::getInstance().getOffset();
     dram.write(address, datum);
     if(cache.read(tag, index)) {
-        Logger::getInstance().logHit();
+        Logger::getInstance().logWriteHit();
         cache.updateElement(tag, index, offset, datum);
     } else {
-        Logger::getInstance().logMiss();
-        cache.writeLine(tag, index, getBlock());
+        Logger::getInstance().logWriteMiss();
+        cache.writeLine(tag, index, dram.getBlock(address));
     }
 }
-void Controller::printCache() {
+void CPU::printCache() {
     cache.print();
 }
-void Controller::printDRAM() {
+void CPU::printDRAM() {
     dram.print();
 }

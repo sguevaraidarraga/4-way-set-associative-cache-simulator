@@ -1,7 +1,7 @@
 #include "memory/cache/Cache.h"
 
 Cache::Cache() {
-    sets = vector<Set>(Settings::NUM_SETS);
+    sets = vector<Set>(Constants::NUM_SETS);
 }
 bool Cache::read(const unsigned int tag, const unsigned int index) {
     return sets[index].inCache(tag);
