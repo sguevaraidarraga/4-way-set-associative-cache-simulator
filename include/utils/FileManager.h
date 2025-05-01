@@ -9,11 +9,12 @@
 
 using std::string;
 using std::ifstream;
+using std::ofstream;
 
 class FileManager {
     public:
-        static void loadDRAMFromFile(DRAM&, string);
-        static void generateDRAMFile(DRAM&);
+        static void loadDRAMFromFile(DRAM&, const string&);
+        static void generateDRAMFile(DRAM&, const string&);
 };
 
 #endif

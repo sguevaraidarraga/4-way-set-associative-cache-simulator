@@ -4,9 +4,13 @@
 #include "utils/Constants.h"
 #include "utils/Logger.h"
 #include "utils/AddressFieldsDecomposer.h"
+#include "utils/FileManager.h"
 #include "memory/cache/Cache.h"
 #include "memory/dram/DRAM.h"
 #include "memory/type/Element.h"
+#include <string>
+
+using std::string;
 
 class CPU {
     Cache cache;
@@ -14,6 +18,8 @@ class CPU {
 
     public:
         CPU();
+        void initialize(const string&);
+        void chao(const string&);
         void read(unsigned int);
         void write(unsigned int, Element&);
         void printCache();
