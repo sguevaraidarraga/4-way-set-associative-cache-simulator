@@ -9,6 +9,9 @@ bool Cache::read(const unsigned int tag, const unsigned int index) {
 void Cache::writeLine(const unsigned int tag, const unsigned int index, const vector<Element> &data) {
     sets[index].replaceLine(tag, data);
 }
+Element Cache::getElement(const unsigned int tag, const unsigned int index, const unsigned int offset) {
+    return sets[index].getElement(tag, offset);
+}
 void Cache::updateElement(const unsigned int tag, const unsigned int index, const unsigned int offset, Element &datum) {
     sets[index].updateElement(tag, offset, datum);
 }

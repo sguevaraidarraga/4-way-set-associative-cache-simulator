@@ -15,6 +15,7 @@ class Set {
     public:
         Set();
         void replaceLine(unsigned int, const vector<Element>&);
+        Element getElement(unsigned int, unsigned int);
         void updateElement(unsigned int, unsigned int, Element&);
         bool inCache(unsigned int) const;
         void print() const;

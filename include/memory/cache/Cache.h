@@ -17,6 +17,7 @@ class Cache {
         Cache();
         bool read(unsigned int, unsigned int);
         void writeLine(unsigned int, unsigned int, const vector<Element>&);
+        Element getElement(unsigned int, unsigned int, unsigned int);
         void updateElement(unsigned int, unsigned int, unsigned int, Element&);
         void print() const;
 };

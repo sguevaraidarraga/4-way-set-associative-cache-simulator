@@ -20,6 +20,13 @@ void Set::replaceLine(const unsigned int tag, const vector<Element> &data) {
         indx = 0;
     }
 }
+Element Set::getElement(unsigned int tag, unsigned int offset) {
+    for(int i = 0; i < Constants::SET_LINES; i++) {
+        if(lines[i].isValid() && lines[i].getTag() == tag) {
+            return lines[i].getElement(offset);
+        }
+    }
+}
 void Set::updateElement(const unsigned int tag, const unsigned int offset, Element &datum) {
     bool f = false;
     for(int i = 0; i < Constants::SET_LINES && !f; i++) {

@@ -11,6 +11,9 @@ bool Line::isValid() const {
 unsigned int Line::getTag() const {
     return tag;
 }
+Element Line::getElement(const unsigned int offset) {
+    return data[offset];
+}
 void Line::setLine(const unsigned int newTag, const vector<Element> &newData) {
     valid = true;
     tag = newTag;

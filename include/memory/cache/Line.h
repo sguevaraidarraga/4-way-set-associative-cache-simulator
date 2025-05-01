@@ -21,6 +21,7 @@ class Line {
         void updateElement(unsigned int, unsigned int, Element&);
         bool isValid() const;
         unsigned int getTag() const;
+        Element getElement(unsigned int);
         void print() const;
 };
 
