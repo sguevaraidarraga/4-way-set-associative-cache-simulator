@@ -17,12 +17,12 @@ void CPU::read(unsigned int address) {
                  offset = AddressFieldsDecomposer::getInstance().getOffset();
     if(cache.read(tag, index)) {
         Logger::getInstance().logReadHit();
-        cout << "[READ] Cache hit! Dirección: 0x" << std::hex << address << std::dec << ", Dato: ";
+        cout << "[READ] hit -> Direccion: 0x" << std::hex << address << std::dec << ", Dato: ";
         cache.getElement(tag, index, offset).print();
         cout << endl;
     } else {
         Logger::getInstance().logReadMiss();
-        cout << "[READ] Cache miss! Dirección: 0x" << std::hex << address << std::dec << ". Cargando bloque desde DRAM." << endl;
+        cout << "[READ] miss -> Direccion: 0x" << std::hex << address << std::dec << ". Cargando bloque desde DRAM." << endl;
         cache.writeLine(tag, index, dram.getBlock(address));
     }
 }
@@ -34,13 +34,13 @@ void CPU::write(unsigned int address, Element &datum) {
     dram.write(address, datum);
     if(cache.read(tag, index)) {
         Logger::getInstance().logWriteHit();
-        cout << "[WRITE] Cache hit! Dirección: 0x" << std::hex << address << std::dec << ", Dato: ";
+        cout << "[WRITE] hit -> Direccion: 0x" << std::hex << address << std::dec << ", Dato: ";
         datum.print();
         cout << endl;
         cache.updateElement(tag, index, offset, datum);
     } else {
         Logger::getInstance().logWriteMiss();
-        cout << "[WRITE] Cache miss! Dirección: 0x" << std::hex << address << std::dec << ", Dato: ";
+        cout << "[WRITE] miss -> Direccion: 0x" << std::hex << address << std::dec << ", Dato: ";
         datum.print();
         cout << ". Cargando bloque desde DRAM." << endl;
         cache.writeLine(tag, index, dram.getBlock(address));
