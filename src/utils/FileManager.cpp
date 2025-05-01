@@ -13,10 +13,10 @@ void FileManager::loadDRAMFromFile(DRAM &dram, const string &path) {
         dram.write(address++, datum);
     }
 }
-void FileManager::generateDRAMFile(DRAM &dram, const string &path) {
-    ofstream file(path);
+void FileManager::generateDRAMFile(DRAM &dram) {
+    ofstream file(Constants::OUT_PATH);
     if(!file.is_open()) {
-        throw std::runtime_error("Error: Couldn't open file at " + path);
+        throw std::runtime_error("Error: Couldn't write file at " + Constants::OUT_PATH);
     }
     Element elem;
     pair<unsigned char, unsigned char> val;
@@ -33,7 +33,7 @@ void FileManager::generateDRAMFile(DRAM &dram, const string &path) {
 void FileManager::generateLogFile() {
     ofstream file(Constants::LOG_PATH);
     if (!file.is_open()) {
-        throw std::runtime_error("Error: Couldn't open file for writing at " + Constants::LOG_PATH);
+        throw std::runtime_error("Error: Couldn't write file for writing at " + Constants::LOG_PATH);
     }
     file << "Metric,Total,Read,Write\n";
     file << "Accesses," << Logger::getInstance().getTotalAccesses() << ","

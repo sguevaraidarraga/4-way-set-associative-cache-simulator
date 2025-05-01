@@ -15,7 +15,7 @@ using std::ofstream;
 
 struct FileManager {
     static void loadDRAMFromFile(DRAM&, const string&);
-    static void generateDRAMFile(DRAM&, const string&);
+    static void generateDRAMFile(DRAM&);
     static void generateLogFile();
 };
 

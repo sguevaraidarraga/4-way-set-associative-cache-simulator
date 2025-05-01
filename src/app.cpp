@@ -1,14 +1,14 @@
 #include "app.h"
 
-App::App() {
-    CPU cpu;
-}
+App::App() : cpu() {}
 bool App::mainMenu() {
+    bool f = false;
     int cmd;
     cout << "1. Inicializar DRAM desde archivo" << endl
          << "2. Generar instrucciones aleatoriamente" << endl
          << "3. Imprimir cache" << endl
          << "4. Exportar archivos" << endl
+         << "5. Salir" << endl
          << "-------------------------------------------------" << endl;
     cin >> cmd;
     cout << endl;
@@ -23,8 +23,13 @@ bool App::mainMenu() {
             printCache();
             break;
         case 4:
+            exportFiles();
+            break;
+        case 5:
+            f = true;
             break;
     }
+    return f;
 }
 void App::initializeDRAM() {
     string filename;
@@ -34,7 +39,7 @@ void App::initializeDRAM() {
     cpu.loadDRAMFromFile(Constants::FILES_PATH + filename);
 }
 void App::generateInstructions() {
-    int k;
+    unsigned int k;
     cout << "Escriba el numero de instrucciones aleatorias: " << endl;
     cin >> k;
     cout << endl;
@@ -45,10 +50,6 @@ void App::printCache() {
     cout << endl;
 }
 void App::exportFiles() {
-    string filename;
-    cout << "Escriba el nombre y la extension del archivo (ej: out.txt): ";
-    cin >> filename;
-    cout << endl;
-    cpu.generateDRAMFile(Constants::FILES_PATH + filename);
+    cpu.generateDRAMFile();
     FileManager::generateLogFile();
 }

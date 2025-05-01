@@ -10,13 +10,13 @@ void Generator::generateInstructions(CPU &cpu, const unsigned int numInstr) {
     uniform_int_distribution<int> letterDist('A', 'Z');
     unsigned int address;
     int op, type;
-    Element elem;
     for(int i = 0; i < numInstr; i++) {
         address = addrDist(gen);
         op = opDist(gen);
         if(op == 0) {
             cpu.read(address);
         } else {
+            Element elem;
             type = typeDist(gen);
             if (type == 0) {
                 elem.replace({digitDist(gen), '0'}, ElementType::DIGIT);

@@ -11,10 +11,9 @@ void DRAM::write(unsigned int address, Element& datum) {
 }
 vector<Element> DRAM::getBlock(const unsigned int address) {
     vector<Element> ans(Constants::WORDS_PER_BLOCK);
-    unsigned int minAddress = AddressFieldsDecomposer::getInstance().getMinAddress(),
-                 maxAddress = AddressFieldsDecomposer::getInstance().getMaxAddress();
-    for(int offset = 0; offset <= maxAddress; offset++) {
-        ans[offset] = data[minAddress + offset];
+    unsigned int baseAddress = AddressFieldsDecomposer::getInstance().getBaseAddress();
+    for(int offset = 0; offset < Constants::WORDS_PER_BLOCK; offset++) {
+        ans[offset] = data[baseAddress + offset];
     }
     return ans;
 }

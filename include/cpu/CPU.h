@@ -19,7 +19,7 @@ class CPU {
     public:
         CPU();
         void loadDRAMFromFile(const string&);
-        void generateDRAMFile(const string&);
+        void generateDRAMFile();
         void read(unsigned int);
         void write(unsigned int, Element&);
         void printCache();
