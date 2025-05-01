@@ -14,22 +14,26 @@ bool App::mainMenu() {
          << "-------------------------------------------------" << endl;
     cin >> cmd;
     cout << endl;
-    switch(cmd) {
-        case 1:
-            initializeDRAM();
-            break;
-        case 2:
-            generateInstructions();
-            break;
-        case 3:
-            printCache();
-            break;
-        case 4:
-            exportFiles();
-            break;
-        case 5:
-            f = true;
-            break;
+    try {
+        switch(cmd) {
+            case 1:
+                initializeDRAM();
+                break;
+            case 2:
+                generateInstructions();
+                break;
+            case 3:
+                printCache();
+                break;
+            case 4:
+                exportFiles();
+                break;
+            case 5:
+                f = true;
+                break;
+        }
+    } catch(const std::exception& e) {
+        cout << "Error: " << e.what() << endl;
     }
     return f;
 }
@@ -39,14 +43,24 @@ void App::initializeDRAM() {
          << "Luego, escriba el nombre y la extension del archivo (por ejemplo: example.txt): ";
     cin >> filename;
     cout << endl;
-    cpu.loadDRAMFromFile(Constants::FILES_PATH + filename);
+    try {
+        cpu.loadDRAMFromFile(Constants::FILES_PATH + filename);
+        cout << "DRAM cargada correctamente." << endl;
+    } catch(const std::exception& e) {
+        cout << "Error al cargar DRAM: " << e.what() << endl;
+    }
 }
 void App::generateInstructions() {
     unsigned int k;
     cout << "Escriba el numero de instrucciones aleatorias: " << endl;
     cin >> k;
     cout << endl;
-    Generator::generateInstructions(cpu, k);
+    try {
+        Generator::generateInstructions(cpu, k);
+        cout << "Instrucciones generadas correctamente." << endl;
+    } catch(const std::exception& e) {
+        cout << "Error al generar instrucciones: " << e.what() << endl;
+    }
 }
 void App::printCache() {
     cpu.printCache();
