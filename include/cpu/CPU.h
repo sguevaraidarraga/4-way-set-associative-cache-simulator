@@ -18,8 +18,8 @@ class CPU {
 
     public:
         CPU();
-        void initialize(const string&);
-        void chao(const string&);
+        void loadDRAMFromFile(const string&);
+        void generateDRAMFile(const string&);
         void read(unsigned int);
         void write(unsigned int, Element&);
         void printCache();

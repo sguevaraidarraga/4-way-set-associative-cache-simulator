@@ -4,10 +4,10 @@ CPU::CPU() {
     cache = Cache();
     dram = DRAM();
 }
-void CPU::initialize(const string& path) {
+void CPU::loadDRAMFromFile(const string& path) {
     FileManager::loadDRAMFromFile(dram, path);
 }
-void CPU::chao(const string& path) {
+void CPU::generateDRAMFile(const string& path) {
     FileManager::generateDRAMFile(dram, path);
 }
 void CPU::read(unsigned int address) {

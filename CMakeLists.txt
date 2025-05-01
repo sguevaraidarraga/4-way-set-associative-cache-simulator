@@ -11,8 +11,11 @@ add_executable(Cache
     src/memory/dram/DRAM.cpp
     src/memory/type/Element.cpp
     src/utils/AddressFieldsDecomposer.cpp
+    src/utils/Constants.cpp
     src/utils/FileManager.cpp
+    src/utils/Generator.cpp
     src/utils/Logger.cpp
+    src/app.cpp
     src/main.cpp
 )
 
