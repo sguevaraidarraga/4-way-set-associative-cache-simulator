@@ -6,6 +6,7 @@
 #include "utils/Generator.h"
 #include <iostream>
 
+using std::exception;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -16,7 +17,10 @@ class App {
     public:
         App();
         bool mainMenu();
-        void initializeDRAM();
+        void initializeDRAMMenu();
+        void initializeDRAMFromFile();
+        void generateDRAM();
+        void executeFromFile();
         void generateInstructions();
         void printCache();
         void exportFiles();

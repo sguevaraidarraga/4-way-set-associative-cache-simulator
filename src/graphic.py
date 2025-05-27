@@ -1,11 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('../files/log.txt')
+df = pd.read_csv('../files/log.csv', delimiter=';')
 
 fig, ax = plt.subplots(figsize=(8, 5))
 metrics = ['Hits', 'Misses']
-totals = df.set_index('Metric').loc[metrics, ['Total', 'Read', 'Write']]
+totals = df.set_index('Metric').loc[metrics, ['Total', 'Read', 'Write']].astype(int)
 
 totals.plot(kind='bar', ax=ax)
 plt.title('Cache Hits and Misses')

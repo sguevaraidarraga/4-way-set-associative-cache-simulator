@@ -6,38 +6,64 @@ bool App::mainMenu() {
     int cmd;
     cout << endl
          << "-------------------------------------------------" << endl
-         << "1. Inicializar DRAM desde archivo" << endl
-         << "2. Generar instrucciones aleatoriamente" << endl
-         << "3. Imprimir cache" << endl
-         << "4. Exportar archivos" << endl
-         << "5. Salir" << endl
+         << "1. Inicializar DRAM" << endl
+         << "2. Ejecutar instrucciones desde archivo" << endl
+         << "3. Generar instrucciones aleatoriamente" << endl
+         << "4. Imprimir cache" << endl
+         << "5. Exportar archivos" << endl
+         << "6. Salir" << endl
          << "-------------------------------------------------" << endl;
     cin >> cmd;
     cout << endl;
     try {
         switch(cmd) {
             case 1:
-                initializeDRAM();
+                initializeDRAMMenu();
                 break;
             case 2:
-                generateInstructions();
+                executeFromFile();
                 break;
             case 3:
-                printCache();
+                generateInstructions();
                 break;
             case 4:
-                exportFiles();
+                printCache();
                 break;
             case 5:
+                exportFiles();
+                break;
+            case 6:
                 f = true;
                 break;
         }
-    } catch(const std::exception& e) {
+    } catch(const exception &e) {
         cout << "Error: " << e.what() << endl;
     }
     return f;
 }
-void App::initializeDRAM() {
+void App::initializeDRAMMenu() {
+    int cmd;
+    cout << endl
+         << "-------------------------------------------------" << endl
+         << "1. Cargar DRAM desde archivo" << endl
+         << "2. Inicializar DRAM aleatoriamente" << endl
+         << "3. Atras" << endl
+         << "-------------------------------------------------" << endl;
+    cin >> cmd;
+    try {
+        switch(cmd) {
+            case 1:
+                initializeDRAMFromFile();
+                break;
+            case 2:
+                generateDRAM();
+                break;
+        }
+    } catch(const exception &e) {
+        cout << "Error: " << e.what() << endl;
+    }
+}
+void App::initializeDRAMFromFile() {
     string filename;
     cout << "Por favor, coloque el archivo de entrada dentro de la carpeta 'files' del proyecto." << endl
          << "Luego, escriba el nombre y la extension del archivo (por ejemplo: example.txt): ";
@@ -46,8 +72,21 @@ void App::initializeDRAM() {
     try {
         cpu.loadDRAMFromFile(Constants::FILES_PATH + filename);
         cout << "DRAM cargada correctamente." << endl;
-    } catch(const std::exception& e) {
+    } catch(const exception &e) {
         cout << "Error al cargar DRAM: " << e.what() << endl;
+    }
+}
+void App::executeFromFile() {
+    string filename;
+    cout << "Por favor, coloque el archivo de instrucciones dentro de la carpeta 'files' del proyecto." << endl
+         << "Luego, escriba el nombre y la extension del archivo (por ejemplo: instrucciones.txt): ";
+    cin >> filename;
+    cout << endl;
+    try {
+        FileManager::executeInstructionsFromFile(cpu, filename);
+        cout << "Instrucciones ejecutadas correctamente." << endl;
+    } catch(const exception &e) {
+        cout << "Error al ejecutar instrucciones: " << e.what() << endl;
     }
 }
 void App::generateInstructions() {
@@ -58,7 +97,7 @@ void App::generateInstructions() {
     try {
         Generator::generateInstructions(cpu, k);
         cout << "Instrucciones generadas correctamente." << endl;
-    } catch(const std::exception& e) {
+    } catch(const exception &e) {
         cout << "Error al generar instrucciones: " << e.what() << endl;
     }
 }

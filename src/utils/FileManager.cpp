@@ -1,4 +1,5 @@
 #include "utils/FileManager.h"
+#include "cpu/CPU.h"
 
 void FileManager::loadDRAMFromFile(DRAM &dram, const string &path) {
     ifstream file(path);
@@ -11,6 +12,30 @@ void FileManager::loadDRAMFromFile(DRAM &dram, const string &path) {
     while(getline(file, line)) {
         datum.replaceFromLine(line);
         dram.write(address++, datum);
+    }
+}
+void FileManager::executeInstructionsFromFile(CPU &cpu, const string &path) {
+    ifstream file(Constants::FILES_PATH + path);
+    if (!file.is_open()) {
+        throw std::runtime_error("Error: Couldn't open instructions file at " + Constants::FILES_PATH + path);
+    }
+    std::string line;
+    while (std::getline(file, line)) {
+        istringstream iss(line);
+        string op;
+        iss >> op;
+        if (op == "READ") {
+            unsigned int address;
+            iss >> address;
+            cpu.read(address);
+        } else if (op == "WRITE") {
+            unsigned int address;
+            string datumStr;
+            iss >> address >> datumStr;
+            Element datum;
+            datum.replaceFromLine(datumStr);
+            cpu.write(address, datum);
+        }
     }
 }
 void FileManager::generateDRAMFile(DRAM &dram) {
@@ -35,20 +60,20 @@ void FileManager::generateLogFile() {
     if (!file.is_open()) {
         throw std::runtime_error("Error: Couldn't write file for writing at " + Constants::LOG_PATH);
     }
-    file << "Metric,Total,Read,Write\n";
-    file << "Accesses," << Logger::getInstance().getTotalAccesses() << ","
-         << Logger::getInstance().getTotalReadAccesses() << ","
+    file << "Metric" << Constants::DELIMITER << "Total" << Constants::DELIMITER << "Read" << Constants::DELIMITER << "Write\n";
+    file << "Accesses" << Constants::DELIMITER << Logger::getInstance().getTotalAccesses() << Constants::DELIMITER
+         << Logger::getInstance().getTotalReadAccesses() << Constants::DELIMITER
          << Logger::getInstance().getTotalWriteAccesses() << "\n";
-    file << "Hits," << Logger::getInstance().getTotalHits() << ","
-         << Logger::getInstance().getReadHits() << ","
+    file << "Hits" << Constants::DELIMITER << Logger::getInstance().getTotalHits() << Constants::DELIMITER
+         << Logger::getInstance().getReadHits() << Constants::DELIMITER
          << Logger::getInstance().getWriteHits() << "\n";
-    file << "Misses," << Logger::getInstance().getTotalMisses() << ","
-         << Logger::getInstance().getReadMisses() << ","
+    file << "Misses" << Constants::DELIMITER << Logger::getInstance().getTotalMisses() << Constants::DELIMITER
+         << Logger::getInstance().getReadMisses() << Constants::DELIMITER
          << Logger::getInstance().getWriteMisses() << "\n";
-    file << "Hit Rate," << Logger::getInstance().getTotalHitRate() << ","
-         << Logger::getInstance().getReadHitRate() << ","
+    file << "Hit Rate" << Constants::DELIMITER << Logger::getInstance().getTotalHitRate() << Constants::DELIMITER
+         << Logger::getInstance().getReadHitRate() << Constants::DELIMITER
          << Logger::getInstance().getWriteHitRate() << "\n";
-    file << "Miss Rate," << Logger::getInstance().getTotalMissRate() << ","
-         << Logger::getInstance().getReadMissRate() << ","
+    file << "Miss Rate" << Constants::DELIMITER << Logger::getInstance().getTotalMissRate() << Constants::DELIMITER
+         << Logger::getInstance().getReadMissRate() << Constants::DELIMITER
          << Logger::getInstance().getWriteMissRate() << "\n";
 }

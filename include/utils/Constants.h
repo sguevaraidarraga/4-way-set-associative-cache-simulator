@@ -21,6 +21,7 @@ struct Constants {
     static constexpr int TAG_BITS = ADDRESS_BITS - (INDEX_BITS + OFFSET_BITS);
     static constexpr int WORDS_PER_BLOCK = BLOCK_SIZE/WORD_SIZE;
     static constexpr int MUX_SELECTOR = static_cast<int>(log2(WORDS_PER_BLOCK));
+    static const char DELIMITER = ';';
     static string FILES_PATH;
     static string OUT_PATH;
     static string LOG_PATH;
